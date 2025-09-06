@@ -1,0 +1,259 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
+
+/* GRID LAYOUT */
+.container {
+  display: grid;
+  grid-template-areas:
+    "navbar"
+    "ordenar"
+    "productos"
+    "footer";
+  gap: 1rem;
+  width: 100%; /* evita desbordes */
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.navbar {
+  grid-area: navbar;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e91e63;
+  padding: 0.8rem 1rem;
+  color: white;
+  position: relative;
+  width: 100%;
+}
+
+.logo {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.nav {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #f8bbd0;
+  width: 220px;
+  border-radius: 0 0 10px 10px;
+}
+
+#menu-toggle:checked ~ .nav {
+  display: block;
+}
+
+.nav ul {
+  list-style: none;
+}
+
+.nav ul li a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+}
+
+/* ORDENAR */
+.ordenar-barra {
+  grid-area: ordenar;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #f8bbd0;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin: 0 0.5rem; /* antes 1rem, esto evita desbordes */
+}
+
+.ordenar-barra select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* PRODUCTOS */
+.productos {
+  grid-area: productos;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  padding: 0.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  width: 100%;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block; /* evita que cree espacio extra */
+}
+
+.card h3 {
+  font-size: 1rem;
+  margin: 0.8rem 0 0.5rem;
+  color: #333;
+}
+
+.card .precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #e91e63;
+  margin-bottom: 0.8rem;
+}
+
+.btn-comprar {
+  background: #e91e63;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+  width: 100%; /* botones full width en mobile */
+}
+
+.btn-comprar:hover {
+  background: #c2185b;
+}
+
+/* FOOTER */
+.footer {
+  grid-area: footer;
+  background: #e91e63;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 576px) {
+  .container {
+    grid-template-areas:
+      "navbar navbar"
+      "ordenar productos"
+      "footer footer";
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .nav {
+    display: flex !important;
+    position: static;
+    background: transparent;
+    width: auto;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav ul li a {
+    padding: 0;
+    color: white;
+  }
+
+  .ordenar-barra {
+    flex-direction: row;
+    align-items: center;
+    width: max-content;
+    justify-self: end;
+    margin: 0 1rem;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+
+    height: auto;
+    align-self: start;
+  }
+
+  .ordenar-barra select {
+    width: auto;
+  }
+
+  .productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 1rem 2rem;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
